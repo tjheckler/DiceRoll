@@ -1,10 +1,19 @@
 <!DOCTYPE html>
+@import helper._
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Dice Roll</title>
 </head>
 <body>
 <h1>Welcome to the Ultimate Dice Roll Web Site</h1>
+<img src="assets/images/six.bmp" width="200">
+<form method="post">
+    @CSRF.formField
+    Sides:<input type="text" name="DieSize"><br>
+    Roll: <input type="submit" name="Roll"><br>
+
+
+</form>
 </body>
 </html>
