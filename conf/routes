@@ -3,7 +3,9 @@
 # ~~~~
 
 GET     /                           controllers.GameController.getStart
-POST    /                           controllers.GameController.postDice
+POST    /                           controllers.GameController.postDice1
+POST    /                           controllers.GameController.postDice2
+POST    /                           controllers.GameController.postDice3
 
 
 # Map static resources from the /public folder to the /assets URL path

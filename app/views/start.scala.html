@@ -10,8 +10,16 @@
 <img src="assets/images/six.bmp" width="200">
 <form method="post">
     @CSRF.formField
+
     Sides:<input type="text" name="DieSize"><br>
+    How Many:
+    <select  name="select">
+    <option Value="die1">1</option>
+    <option Value="die2">2</option>
+    <option Value="die3">3</option>
+    </select>
     Roll: <input type="submit" name="Roll"><br>
+
 
 
 </form>
