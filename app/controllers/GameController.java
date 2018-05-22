@@ -5,6 +5,7 @@ import play.data.DynamicForm;
 import play.data.FormFactory;
 import play.mvc.Controller;
 import play.mvc.Result;
+import sun.plugin2.message.Message;
 
 import javax.inject.Inject;
 import java.util.Random;
@@ -22,28 +23,27 @@ public class GameController extends Controller
 
     public Result postDice1()
     {
-        DynamicForm form = formFactory.form().bindFromRequest();
-        int dieSize = Integer.parseInt(form.get("DieSize"));
-        //int howMany = Integer.parseInt(form.get("die1"));
-        Die die1 = new Die(dieSize);
-        return ok(views.html.rolldice.render(die1));
+
+            DynamicForm form = formFactory.form().bindFromRequest();
+            int dieSize = Integer.parseInt(form.get("DieSize"));
+            int numberOfDice = Integer.parseInt(form.get("numberOfDice"));
+            Die die1 = new Die(dieSize);
+            Die die2 = new Die(dieSize);
+            Die die3 = new Die(dieSize);
+            if (numberOfDice == 1)
+            {
+                return ok(views.html.rolldice.render(die1));
+            } else if (numberOfDice == 2)
+            {
+                return ok(views.html.rolldice2.render(die1, die2));
+            } else if (numberOfDice == 3)
+            {
+                return ok(views.html.rolldice3.render(die1, die2, die3));
+            }
+        return badRequest("Invalid number of dice");
+
     }
-    public Result postDice2()
-    {
-        DynamicForm form = formFactory.form().bindFromRequest();
-        int dieSize = Integer.parseInt(form.get("DieSize"));
-        //int howMany = Integer.parseInt(form.get("die2"));
-        Die die2 = new Die(dieSize);
-        return ok(views.html.rolldice.render(die2));
-    }
-    public Result postDice3()
-    {
-        DynamicForm form = formFactory.form().bindFromRequest();
-        int dieSize = Integer.parseInt(form.get("DieSize"));
-        //int howMany = Integer.parseInt(form.get("die3"));
-        Die die3 = new Die(dieSize);
-        return ok(views.html.rolldice.render(die3));
-    }
+
 
     public Result getStart()
     {
